@@ -1,5 +1,17 @@
 # Ecommerce React Web
 
+## Github Setup: 
+
+Git clone: `git clone ...link...` 
+
+Git Remote set: `git remote set-url origin ...link...`
+
+Create your own repository. Then set the remote location of your repository.
+
+## React Project Run
+
+React package Install: `npm install`
+
 React project run: `npm run dev`
 
 ## Font Awesome 
