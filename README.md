@@ -6,6 +6,8 @@ Git clone: `git clone ...link...`
 
 Git Remote set: `git remote set-url origin ...link...`
 
+You can check your remote location: `git remote -v`
+
 Create your own repository. Then set the remote location of your repository.
 
 ## React Project Run
