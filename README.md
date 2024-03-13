@@ -2,9 +2,9 @@
 
 ## Github Setup: 
 
-Git clone: `git clone ...link...` 
+Git clone: `git clone <..link..>` 
 
-Git Remote set: `git remote set-url origin ...link...`
+Git Remote set: `git remote set-url origin <..link..>`
 
 You can check your remote location: `git remote -v`
 
