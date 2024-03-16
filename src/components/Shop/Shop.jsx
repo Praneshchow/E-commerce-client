@@ -6,7 +6,7 @@ import Cart from '../Cart/Cart';
 import { addToDb, getShoppingCart } from '../../utilities/fakedb';
 
 const Shop = () => {
-    const [products, setProducts] = useState([]);
+    const [products, setProducts] = useState([]);     // For API access. 
     const [cart, setCart] = useState([]);
 
     // API data fetch. 
@@ -16,7 +16,7 @@ const Shop = () => {
         .then(data => setProducts(data))
     }, []);
 
-    // Local storage stored data. 
+    // Local storage stored data. (we stored data using unique id)
     useEffect(() => {
         const storedCart = getShoppingCart(); 
         const savedCart = [];
@@ -41,7 +41,6 @@ const Shop = () => {
     const handleAddToCart = (product) => {
         // const newCart = [...cart, product];
         let newCart = [];
-        // const newCart = [...cart, product];
         // if product doesn't exist in the cart, then set quantity = 1
         // if exist update quantity by 1
         const exists = cart.find(pd => pd.id === product.id);
@@ -56,7 +55,7 @@ const Shop = () => {
         }
 
         setCart(newCart);
-        addToDb(product.id)
+        addToDb(product.id);
     }
 
     return (
