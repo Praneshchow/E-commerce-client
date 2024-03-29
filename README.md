@@ -21,4 +21,8 @@ React project run: `npm run dev`
 Link to load API data: https://raw.githubusercontent.com/ProgrammingHero1/ema-john-resources/main/fakeData/products.json
 
 
+## React Router Setup: 
+
+Run this: `npm install react-router-dom localforage match-sorter sort-by`
+
 
