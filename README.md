@@ -1,4 +1,4 @@
-# Ecommerce React Web
+# Ecommerce React Web (Ema-john)
 
 ## Github Setup: 
 
