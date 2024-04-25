@@ -1,10 +1,17 @@
-import { Link } from 'react-router-dom';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
 import './Login.css'
-import { useContext } from 'react';
+import { useContext, useState } from 'react';
 import { AuthContext } from '../providers/AuthProvider';
 
 const Login = () => {
-    const {signIn} = useContext(AuthContext);
+    const [show, setShow] = useState(false);
+
+    const { signIn } = useContext(AuthContext);
+    const navigate = useNavigate();
+    const location = useLocation();
+    console.log(location);
+
+    const from = location.state?.from?.pathname || '/';
 
     const handleLogin = event => {
         event.preventDefault();
@@ -15,14 +22,15 @@ const Login = () => {
         console.log(email, password);
 
         signIn(email, password)
-        .then(result => {
-            const loggedUser = result.user;
-            console.log(loggedUser);
-            form.reset();
-        })
-        .catch(error => {
-            console.log(error);
-        })
+            .then(result => {
+                const loggedUser = result.user;
+                console.log(loggedUser);
+                form.reset();
+                navigate(from, {replace:true});
+            })
+            .catch(error => {
+                console.log(error);
+            })
     }
 
     return (
@@ -37,13 +45,19 @@ const Login = () => {
                         </div>
                         <div className="form-control">
                             <label className="label">Password</label>
-                            <input type="password" name="password" placeholder="password" className="input input-bordered bg-white" required />
+                            <input type={show ? "text" : "password"} name="password" placeholder="password" className="input input-bordered bg-white" required />
+                            <p onClick={() => setShow(!show)}>
+                                {
+                                    show ? <small>Hide Password</small> : <small>Show Password</small>
+                                }
+                            </p>
                             <label className="label">
                                 <a className="link link-primary">Forget Password?</a>
                             </label>
                         </div>
+
                         <button className="btn btn-warning">Login</button>
-                        
+
                         <button className="btn">Google Login</button>
                         <p>New to Ema-john? <Link to="/signup" className='link link-primary'>Create an account</Link> </p>
                     </form>

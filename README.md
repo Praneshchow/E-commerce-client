@@ -27,4 +27,35 @@ Link to load API data: https://raw.githubusercontent.com/ProgrammingHero1/ema-jo
 Run this: `npm install react-router-dom localforage match-sorter sort-by`
 
 
+## Feature Applied:
+
+* React Router.
+* Accessing parent and child component data using context API. 
+* Login and Registration using Firebase. 
+* Private router (Orders component is a private access). 
+* Checklist path/location show After login or load the home section. 
+
+
+
+Used Commands for firebase setup and deploy:
+-----------------------------------------------------
+`npm install -g firebase-tools`
+
+`firebase login`
+
+Allow Firebase to collect CLI and Emulator Suite usage and error reporting information? Yes
+
+Are you ready to proceed? Yes
+
+Select a default Firebase project for this directory: Your_project
+
+What do you want to use as your public directory? dist
+
+Configure as a single-page app (rewrite all urls to /index.html)? Yes
+
+Set up automatic builds and deploys with GitHub? No
+
+`npm run build`
+
+`firebase deploy`
 
