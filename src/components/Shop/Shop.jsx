@@ -7,13 +7,13 @@ import { addToDb, deleteShoppingCart, getShoppingCart } from '../../utilities/fa
 import { Link, useLoaderData } from 'react-router-dom';
 
 const Shop = () => {
-    const [products, setProducts] = useState([]);     // For API access. 
+    const [products, setProducts] = useState([]);      // For API access. 
     const [cart, setCart] = useState([]);
 
     // Pagination. 
     const { totalProducts } = useLoaderData();
-    const [ currentPage, setCurrentPage ] = useState(0);
-    const [ itemsPerPage, setItemsPerPage ] = useState(10);
+    const [currentPage, setCurrentPage] = useState(0);
+    const [itemsPerPage, setItemsPerPage] = useState(10);
 
     const totalPages = Math.ceil(totalProducts / itemsPerPage);
 
@@ -46,23 +46,36 @@ const Shop = () => {
     // Local storage stored data. (we stored data using unique id)
     useEffect(() => {
         const storedCart = getShoppingCart();
-        const savedCart = [];
-        // step 1: get id
-        for (const id in storedCart) {
-            // step 2: get the product by using id. 
-            const addedProduct = products.find(product => product._id === id);
+        const ids = Object.keys(storedCart);
 
-            if (addedProduct) {
-                // step 3: product show when product added. 
-                const quantity = storedCart[id];
-                addedProduct.quantity = quantity;
-                // step 4: add the added product to the saved cart. 
-                savedCart.push(addedProduct);
-            }
-        }
-        // step 5: set the cart. 
-        setCart(savedCart);
-    }, [products])           // products is now a dependency. when product changes the update value will show. 
+        fetch('http://localhost:5000/productsByIds', {
+            method: 'POST',
+            headers: {
+                'content-type': 'application/json'
+            },
+            body: JSON.stringify(ids)
+        })
+            .then(res => res.json())
+            .then(cartProducts => {
+                const savedCart = [];
+                // step 1: get id
+                for (const id in storedCart) {
+                    // step 2: get the product by using id. 
+                    const addedProduct = cartProducts.find(product => product._id === id);
+
+                    if (addedProduct) {
+                        // step 3: product show when product added. 
+                        const quantity = storedCart[id];
+                        addedProduct.quantity = quantity;
+                        // step 4: add the added product to the saved cart. 
+                        savedCart.push(addedProduct);
+                    }
+                }
+                // step 5: set the cart. 
+                setCart(savedCart);
+            })
+
+    }, [])           // products is now a dependency. when product changes the update value will show. 
 
     // cart item add. 
     const handleAddToCart = (product) => {
@@ -93,7 +106,7 @@ const Shop = () => {
     }
 
 
-    function handleSelectChange(event){
+    function handleSelectChange(event) {
         setItemsPerPage(parseInt(event.target.value));
         setCurrentPage(0);
     }
@@ -127,10 +140,10 @@ const Shop = () => {
             <div className='pagination'>
                 <p>Current Page: {currentPage} and Items per page: {itemsPerPage}</p>
                 {
-                    pageNumbers.map(number => <button 
-                    key={number}
-                    className={currentPage === number ? 'selected': ''}
-                    onClick={() => setCurrentPage(number)}
+                    pageNumbers.map(number => <button
+                        key={number}
+                        className={currentPage === number ? 'selected' : ''}
+                        onClick={() => setCurrentPage(number)}
                     >{number}</button>)
                 }
 

@@ -43,6 +43,8 @@ Used Commands for firebase setup and deploy:
 
 `firebase login`
 
+```
+
 Allow Firebase to collect CLI and Emulator Suite usage and error reporting information? Yes
 
 Are you ready to proceed? Yes
@@ -54,6 +56,8 @@ What do you want to use as your public directory? dist
 Configure as a single-page app (rewrite all urls to /index.html)? Yes
 
 Set up automatic builds and deploys with GitHub? No
+
+```
 
 `npm run build`
 
