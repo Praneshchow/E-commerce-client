@@ -25,7 +25,7 @@ const Shop = () => {
 
     // // API data fetch. 
     // useEffect(() => {
-    //     fetch('http://localhost:5000/products')
+    //     fetch('https://e-commerce-server-rouge.vercel.app/products')
     //         .then(res => res.json())
     //         .then(data => setProducts(data))
     // }, []);
@@ -34,7 +34,7 @@ const Shop = () => {
     // API data fetch. 
     useEffect(() => {
         async function fetchData() {
-            const response = await fetch(`http://localhost:5000/products?page=${currentPage}&limit=${itemsPerPage}`);
+            const response = await fetch(`https://e-commerce-server-rouge.vercel.app/products?page=${currentPage}&limit=${itemsPerPage}`);
             const data = await response.json();
             setProducts(data);
         }
@@ -48,7 +48,7 @@ const Shop = () => {
         const storedCart = getShoppingCart();
         const ids = Object.keys(storedCart);
 
-        fetch('http://localhost:5000/productsByIds', {
+        fetch('https://e-commerce-server-rouge.vercel.app/productsByIds', {
             method: 'POST',
             headers: {
                 'content-type': 'application/json'

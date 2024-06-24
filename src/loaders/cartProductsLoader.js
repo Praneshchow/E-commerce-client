@@ -7,7 +7,7 @@ const cartProductsLoader = async () => {
     console.log(ids);
 
 
-    const loadedProducts = await fetch('http://localhost:5000/productsByIds', {
+    const loadedProducts = await fetch('https://e-commerce-server-rouge.vercel.app/productsByIds', {
         method: 'POST',
         headers: {
             'content-type': 'application/json'
