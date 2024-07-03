@@ -1,6 +1,5 @@
 # Ecommerce React Web (Ema-john)
 
-
 ## Github Setup: 
 
 Git clone: `git clone <..link..>` 
@@ -16,6 +15,14 @@ Create your own repository. Then set the remote location of your repository.
 React package Install: `npm install`
 
 React project run: `npm run dev`
+
+## Features: 
+
+* API Data Loading
+* Authentication Using Firebase (Login and Registration)
+* Private Routing
+* CRUD Operations on the Server Side (Express and MongoDB)
+
 
 ## API
 
@@ -39,6 +46,9 @@ Run this: `npm install react-router-dom localforage match-sorter sort-by`
 
 Used Commands for firebase setup and deploy:
 -----------------------------------------------------
+initial deployment then switched to netlify. 
+
+
 `npm install -g firebase-tools`
 
 `firebase login`
