@@ -73,7 +73,7 @@ Set up automatic builds and deploys with GitHub? No
 
 `firebase deploy`
 
-## Modification Note:
+## Update (Note):
 
 * I improved the project's dependency security by reducing 36 vulnerabilities to 4. I updated Firebase and React Router to safe, compatible versions, resolved dependency conflicts and kept the project fully compatible with React 18 without introducing breaking changes. 
 
